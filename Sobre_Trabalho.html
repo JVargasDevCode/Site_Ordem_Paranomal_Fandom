@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Acesso à Ordem</title>
+  <script src="JJavaScript.js"></script>
+  <link rel="stylesheet" href="CSS_Paranomal.css">
+</head>
+<body>
+
+<nav>
+<nav>
+  <a href="cadastro.html">Cadastro</a>
+  <a href="Local.html">CEP</a>
+  <a href="Site_da_Ordem.html">Acesso</a>
+  <a href="Sobre_Trabalho.html">Sobre</a>
+</nav>
+</nav>
+
+<main>
+<section>
+  <h2>📖 Explicação Técnica do Projeto</h2>
+  
+  <article>
+    <h3>🏷️ HTML Semântico</h3>
+    <p>Utilizamos tags como <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code> e <code>&lt;article&gt;</code> para que o navegador e ferramentas de acessibilidade entendam a hierarquia e o significado de cada parte do conteúdo, indo além de simples <code>&lt;div&gt;s</code>[cite: 11, 19].</p>
+  </article>
+
+  <article>
+    <h3>🎨 CSS: Layout e Design</h3>
+    <ul>
+      <li><strong>Box Model:</strong> Cada elemento é tratado como uma caixa com margens, bordas, preenchimento (padding) e o conteúdo em si, permitindo controle total do espaçamento[cite: 36, 38].</li>
+      <li><strong>Flexbox:</strong> Usado no menu de navegação e na seção de personagens para alinhar elementos de forma flexível e centralizada[cite: 19, 36].</li>
+      <li><strong>Grid:</strong> Aplicado na lista de agentes para organizar os dados em colunas estruturadas de forma automática[cite: 26, 36].</li>
+      <li><strong>Responsividade:</strong> Através de <em>Media Queries</em>, o site se adapta a celulares, reorganizando as colunas do Grid em uma linha única[cite: 23, 26].</li>
+    </ul>
+  </article>
+
+  <article>
+    <h3>⚙️ JavaScript e Persistência</h3>
+    <ul>
+      <li><strong>LocalStorage:</strong> Os dados dos agentes são salvos diretamente no navegador. Isso garante que as informações não sumam quando você fecha ou atualiza a página[cite: 17, 36].</li>
+      <li><strong>Fetch API:</strong> Na tela de Localização, o JavaScript faz uma "chamada" externa para o serviço ViaCEP, buscando o endereço em tempo real sem precisar recarregar o site[cite: 11, 29, 36].</li>
+    </ul>
+  </article>
+</section>
