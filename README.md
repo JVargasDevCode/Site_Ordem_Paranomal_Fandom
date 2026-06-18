@@ -103,8 +103,6 @@ Funcionalidades:
 * Nome de usuário
 * Publicações realizadas
 * Teorias criadas
-* Fanarts enviadas
-* Cosplays enviados
 
 ### Produtos
 
