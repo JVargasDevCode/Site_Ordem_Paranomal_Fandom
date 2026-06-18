@@ -1,0 +1,28 @@
+export function salvarCurtida(id) {
+
+  let curtidas =
+    JSON.parse(
+      localStorage.getItem(
+        "curtidas"
+      )
+    ) || {};
+
+  curtidas[id] =
+    (curtidas[id] || 0) + 1;
+
+  localStorage.setItem(
+    "curtidas",
+    JSON.stringify(curtidas)
+  );
+}
+export function pegarCurtidas(id) {
+
+  const curtidas =
+    JSON.parse(
+      localStorage.getItem(
+        "curtidas"
+      )
+    ) || {};
+
+  return curtidas[id] || 0;
+}
