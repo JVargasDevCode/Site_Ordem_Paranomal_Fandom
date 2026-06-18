@@ -168,13 +168,13 @@ Antes de executar é necessário ter instalado:
 ### Passo 1 - Clonar o repositório
 
 ```bash
-git clone https://github.com/seu-usuario/controle-gastos-pessoais.git
+git clone https://github.com/Seu nome de usuario/Site_Ordem_Paranomal_Fandom
 ```
 
 ### Passo 2 - Acessar a pasta do projeto
 
 ```bash
-cd controle-gastos-pessoais
+cd Site_Ordem_Paranomal_Fandom
 ```
 
 ### Passo 3 - Instalar as dependências
@@ -258,6 +258,7 @@ src
 │   ├── AuthService.js
 │   ├── ComunidadeService.js
 │   ├── GoogleAuth.js
+│   ├── MediaStorageService.js
 │   ├── PostagemService
 │   ├── Storage.jv
 │   ├── TeoriasService.js
