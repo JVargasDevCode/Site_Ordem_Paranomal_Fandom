@@ -118,17 +118,6 @@ Funcionalidades:
 * Materiais publicados pela Jambô Editora
 * Links para acesso aos produtos
 
-### Onírico
-
-Página explicativa sobre RPG.
-
-Funcionalidades:
-
-* O que é RPG
-* Como funciona uma mesa
-* Conceitos básicos
-* Introdução ao universo de Ordem Paranormal
-
 ---
 
 ## 💾 Armazenamento
