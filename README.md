@@ -209,7 +209,7 @@ Cada integrante contribuiu em áreas específicas do desenvolvimento, documenta�
 * Favoritos
 * Login Google
 * Banco de dados
-* Upload real de imagens
+* Editar postagens
 * Perfil avançado
 * Busca de personagens
 * Busca de temporadas
