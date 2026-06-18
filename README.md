@@ -157,7 +157,147 @@ Exemplos:
 ✅ Layout responsivo
 
 ---
+## Instalação e Execução do projeto
 
+Antes de executar é necessário ter instalado:
+
+* Node.js (versão 18 ou superior recomendada)
+* npm (gerenciador de pacotes do Node.js)
+* Git (opcional, para clonar o repositório)
+
+### Passo 1 - Clonar o repositório
+
+```bash
+git clone https://github.com/seu-usuario/controle-gastos-pessoais.git
+```
+
+### Passo 2 - Acessar a pasta do projeto
+
+```bash
+cd controle-gastos-pessoais
+```
+
+### Passo 3 - Instalar as dependências
+
+```bash
+npm install
+```
+
+### Passo 4 - Executar o projeto
+
+```bash
+npm run dev
+```
+
+
+### Passo 5 - Abrir no navegador
+
+Acesse o endereço exibido no terminal, normalmente:
+
+
+```text
+http://localhost:5173
+```
+
+### Passo 6 - Encerrar a aplicação
+
+Para interromper a execução do projeto, utilize no terminal:
+
+```text
+CTRL + C
+```
+---
+### 📂 Estrutura do Projeto
+
+```text
+src
+├── capas
+│   ├── calamidade.jpg
+│   ├── desconjuração.jpg
+│   ├── Iniciação.jpg
+│   ├── segredo na floresta.jpg
+│   ├── segredo na ilha.jpg
+│   └── Sinais do outro lado.jpg
+│
+├── components
+│   ├── CardComunidade.jsx
+│   ├── CardComunidadeNova.jsx
+│   ├── CardPersonagem.jsx
+│   ├── CardTemporada.jsx
+│   ├── CardTeoria.jsx
+│   ├── CardTeoriaNova.jsx
+│   ├── Footer.jsx
+│   └── Navbar.jsx
+│
+├── data
+│   └── temporada
+│
+├── pages
+│   ├── Cadastro.jsx
+│   ├── Comunidade.jsx
+│   ├── Home.jsx
+│   ├── Login.jsx
+│   ├── Perfil.jsx
+│   ├── Persona.jsx
+│   ├── Postagens.jsx
+│   ├── Produtos.jsx
+│   ├── Temporadas.jsx
+│   └── Teorias.jsx
+│
+├── personagens
+│   ├── Arthur.jpeg
+│   ├── Carina_Leona.jpeg
+│   ├── Dante..jpeg
+│   ├── Joui.jpeg
+│   ├── Kaiser..jpeg
+│   ├── Liz..jpeg
+│   ├── Tiago..jpeg
+│   └── personagem.js
+│
+├── services
+│   ├── AuthService.js
+│   ├── ComunidadeService.js
+│   ├── GoogleAuth.js
+│   ├── PostagemService
+│   ├── Storage.jv
+│   ├── TeoriasService.js
+│   └── UsuarioService.js
+│
+├── App.css
+├── App.jsx
+├── index.css
+└── main.jsx
+```
+---
+### 🌐 Funcionamento e Aplicação no Mundo Real (Front-End Only)
+
+Este é um projeto desenvolvido **100% no ecossistema Front-End**, o que significa que toda a lógica de negócios, gerenciamento de estado e persistência de dados acontecem diretamente no navegador do usuário (Client-Side). 
+
+No mercado de desenvolvimento moderno, aplicações puramente Front-End são extremamente comuns e se aplicam nos seguintes cenários reais:
+
+## 1. Aplicações Baseadas em LocalStorage (Offline-First)
+Sem um banco de dados tradicional, o projeto utiliza o navegador para salvar informações. O arquivo `Storage.jv` (ou LocalStorage) funciona como o "banco de dados" local do usuário.
+* **Aplicação Real:** Aplicativos de produtividade (como o **Trello** ou **Notion** em modo offline), gerenciadores de tarefas (To-Do lists) e ferramentas de notas utilizam essa exata abordagem para salvar as preferências e dados do usuário localmente sem gastar com servidores externos.
+
+## 2. Integração com APIs Públicas ou Prontas (Serverless / BaaS)
+Mesmo sem um Back-End próprio, a pasta `services` (como o `GoogleAuth.js` e `TeoriasService.js`) permite que o app se conecte diretamente a serviços de terceiros.
+* **Aplicação Real:** É o conceito de **BaaS (Backend as a Service)**. Portais de conteúdo e fóruns modernos usam o Front-End para se conectar diretamente ao **Firebase**, **Supabase** ou APIs públicas. Toda a autenticação do Google e a postagem de dados podem ser enviadas diretamente para essas nuvens sem que você precise programar um servidor do zero.
+
+## 3. Sites Estáticos Dinâmicos (JAMstack)
+Plataformas de conteúdo que não mudam o tempo todo (como blogs de notícias, wikis de jogos e portfólios) se beneficiam muito dessa estrutura.
+* **Aplicação Real:** Sites como **Fandom Wiki** ou blogs de RPG usam arquivos de dados estáticos (como arquivos JSON na pasta `data/temporada`) para carregar o conteúdo instantaneamente. Isso torna o carregamento extremamente rápido, seguro contra ataques de invasão de banco de dados e muito barato para manter hospedado (em plataformas como Vercel or Netlify).
+
+## 4. Protótipos de Alta Fidelidade (MVP - Minimum Viable Product)
+Antes de uma grande empresa investir milhares de reais criando um banco de dados complexo, os desenvolvedores criam exatamente o que você fez.
+* **Aplicação Real:** Um MVP (Mínimo Produto Viável) serve para validar se os usuários gostam da interface, do design e do fluxo de navegação de uma rede social de RPG antes de contratar uma equipe de Back-End.
+
+---
+
+### 🛠️ Mecanismos Técnicos Utilizados
+* **Persistência Local:** Utilização da Web Storage API (LocalStorage/SessionStorage) para simular o comportamento de um banco de dados na máquina do cliente.
+* **Roteamento Dinâmico:** Gerenciamento de navegação entre as páginas (`Home`, `Comunidade`, `Perfil`) sem recarregar o navegador, controlando o estado da sessão localmente.
+* **Simulação de Estados:** Criação de fluxos de login e cadastro mockados (simulados) para validação de experiência do usuário (UX).
+---
 ## 👨‍💻 Equipe
 
 ### Júlio Vargas
@@ -182,7 +322,7 @@ Responsável por:
 * Organização visual
 * Auxílio na documentação
 
-## Viel
+### Viel
 
 Responsável por:
 
