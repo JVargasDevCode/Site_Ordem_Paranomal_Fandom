@@ -210,6 +210,7 @@ Cada integrante contribuiu em áreas específicas do desenvolvimento, documenta�
 * Login Google
 * Banco de dados
 * Editar postagens
+* Sistema puxar a conta do Tiktok, Twiter ou Instagram automaticamente
 * Perfil avançado
 * Busca de personagens
 * Busca de temporadas
