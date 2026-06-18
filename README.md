@@ -289,7 +289,7 @@ Plataformas de conteúdo que não mudam o tempo todo (como blogs de notícias, w
 * **Aplicação Real:** Sites como **Fandom Wiki** ou blogs de RPG usam arquivos de dados estáticos (como arquivos JSON na pasta `data/temporada`) para carregar o conteúdo instantaneamente. Isso torna o carregamento extremamente rápido, seguro contra ataques de invasão de banco de dados e muito barato para manter hospedado (em plataformas como Vercel or Netlify).
 
 ## 4. Protótipos de Alta Fidelidade (MVP - Minimum Viable Product)
-Antes de uma grande empresa investir milhares de reais criando um banco de dados complexo, os desenvolvedores criam exatamente o que você fez.
+Isso seria um MVP para testarmos como pode ficar no futuro com um Banco de Dados.
 * **Aplicação Real:** Um MVP (Mínimo Produto Viável) serve para validar se os usuários gostam da interface, do design e do fluxo de navegação de uma rede social de RPG antes de contratar uma equipe de Back-End.
 
 ---
