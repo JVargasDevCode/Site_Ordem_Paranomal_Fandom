@@ -215,6 +215,8 @@ Cada integrante contribuiu em áreas específicas do desenvolvimento, documenta�
 
 ---
 
+---
+
 ## 🚀 Futuras Melhorias
 
 * Comentários em teorias
