@@ -355,6 +355,8 @@ Cada integrante contribuiu em áreas específicas do desenvolvimento, documenta�
 * Perfil avançado
 * Busca de personagens
 * Busca de temporadas
+* Colocar os de mais personagens, e os NPCs
+* Por o jogo e link de compra com as opções das plataformas (steam, XBOX, Nintendo e etc)
 
 ---
 
