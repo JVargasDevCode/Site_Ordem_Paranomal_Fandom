@@ -1,0 +1,40 @@
+const CHAVE = "postagens";
+
+export function listarPostagens() {
+
+  const dados =
+    localStorage.getItem(CHAVE);
+
+  return dados
+    ? JSON.parse(dados)
+    : [];
+}
+
+export function criarPostagem(postagem) {
+
+  const postagens =
+    listarPostagens();
+
+  postagens.push(postagem);
+
+  localStorage.setItem(
+    CHAVE,
+    JSON.stringify(postagens)
+  );
+}
+
+export function apagarPostagem(id) {
+
+  const postagens =
+    listarPostagens();
+
+  const novas =
+    postagens.filter(
+      post => post.id !== id
+    );
+
+  localStorage.setItem(
+    CHAVE,
+    JSON.stringify(novas)
+  );
+}
