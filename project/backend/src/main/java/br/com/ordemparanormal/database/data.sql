@@ -52,4 +52,3 @@ INSERT INTO teorias (id, titulo, conteudo, status, autor_id, data_criacao) VALUE
 
 INSERT INTO creditos (id, funcao, link_profile, nome) VALUES
                                                           (1, 'Desenvolvedor Principal & Arquiteto', 'https://github.com/JVargas', 'JVargas'),
-                                                          (2, 'Direção Criativa & Lore', 'https://github.com/OrdemFandom', 'Equipe Ordem Fandom');
