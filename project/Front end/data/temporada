@@ -1,0 +1,64 @@
+import capaIniciacao from "../capas/Iniciação.jpg";
+import capaSegredoFloresta from "../capas/segredo na floresta.jpg";
+import capaDesconjuracao from "../capas/desconjuração.jpg";
+import capaCalamidade from "../capas/calamidade.jpg";
+import capaSegredoIlha from "../capas/segredo na ilha.jpg";
+import capaSinaisOutroLado from "../capas/Sinais do outro lado.jpg";
+
+const temporadas = [
+  {
+    id: 1,
+    nome: "A Ordem Paranormal",
+    descricao: "Primeira campanha do universo.",
+    capa: capaIniciacao,
+    playlist:
+      "https://www.youtube.com/playlist?list=PL7ZwE005lvhrBCqdHc3zQKoqzkklKUhN0"
+  },
+
+  {
+    id: 2,
+    nome: "O Segredo na Floresta",
+    descricao: "Investigação sobre o desaparecimento da Equipe Kelvin.",
+    capa: capaSegredoFloresta,
+    playlist:
+      "https://www.youtube.com/playlist?list=PL7ZwE005lvhoGkp88Ur7MBL3jXf4XqMjF"
+  },
+
+  {
+    id: 3,
+    nome: "Desconjuração",
+    descricao: "A Ordem enfrenta ameaças ainda maiores.",
+    capa: capaDesconjuracao,
+    playlist:
+      "https://www.youtube.com/playlist?list=PL7ZwE005lvhoeU1boBxblL0t_JL1B0Bfo"
+  },
+
+  {
+    id: 4,
+    nome: "Calamidade",
+    descricao: "O confronto contra Kian.",
+    capa: capaCalamidade,
+    playlist:
+      "https://www.youtube.com/playlist?list=PL7ZwE005lvhpwy5LoKj8FXi2MXtJyey54I"
+  },
+
+  {
+    id: 5,
+    nome: "O Segredo na Ilha",
+    descricao: "Spin-off em uma ilha misteriosa.",
+    capa: capaSegredoIlha,
+    playlist:
+      "https://www.youtube.com/playlist?list=PLJ3A9Ntb1tg69P94-iQo0xCdgaBVX-ecu"
+  },
+
+  {
+    id: 6,
+    nome: "Sinais do Outro Lado",
+    descricao: "Spin-off envolvendo o Outro Lado.",
+    capa: capaSinaisOutroLado,
+    playlist:
+      "https://www.youtube.com/playlist?list=PLJ3A9Ntb1tg5UWwv0fsDGjPG0bp_k9pJL"
+  }
+];
+
+export default temporadas;

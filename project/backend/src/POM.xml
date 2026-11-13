@@ -1,0 +1,90 @@
+package br.com.ordemparanormal.domain;
+
+        import jakarta.persistence.*;
+        import java.util.ArrayList;
+        import java.util.List;
+
+        @Entity
+        @Table(name = "personagem")
+        public class Personagem {
+
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Long id;
+
+        @Column(nullable = false)
+        private String nome;
+
+        @Column(nullable = false)
+        private String classe; // Ex: Especialista, Combatente, Ocultista
+
+        private String origem;
+
+        @Column(nullable = false)
+        private Integer nex = 5; // Nível de Exposição Paranormal (0 a 100)
+
+        @ManyToOne
+        @JoinColumn(name = "jogador_id", nullable = false)
+        private Jogador jogador;
+
+        @ManyToOne
+        @JoinColumn(name = "temporada_id")
+        private Temporada temporada;
+
+        // Relacionamento com regras de composição
+        @OneToMany(mappedBy = "personagem", cascade = CascadeType.ALL, orphanRemoval = true)
+        private List<Teoria> teorias = new ArrayList<>();
+
+    // Construtor padrão exigido pelo JPA
+    protected Personagem() {}
+
+    // Construtor com obrigatoriedade de campos essenciais (Proteção de Invariantes)
+    public Personagem(String nome, String classe, Jogador jogador) {
+    if (nome == null || nome.isBlank()) {
+    throw new IllegalArgumentException("O nome do personagem não pode ser vazio.");
+    }
+    if (classe == null || classe.isBlank()) {
+    throw new IllegalArgumentException("A classe do personagem é obrigatória.");
+    }
+    if (jogador == null) {
+    throw new IllegalArgumentException("Todo personagem precisa estar vinculado a um jogador.");
+    }
+    this.nome = nome;
+    this.classe = classe;
+    this.jogador = jogador;
+    this.nex = 5; // Padrão inicial do sistema
+    }
+
+    // --- REGRAS DE NEGÓCIO ENCAPSULADAS (Comportamento POO) ---
+
+    public void avancarNex(int valorAdicional) {
+    if (valorAdicional <= 0) {
+    throw new IllegalArgumentException("O incremento de NEX deve ser maior que zero.");
+    }
+    if (this.nex + valorAdicional > 100) {
+    throw new IllegalStateException("O NEX de um personagem não pode ultrapassar 100%.");
+    }
+    this.nex += valorAdicional;
+    }
+
+    public void alterarClasse(novaClasse) {
+    // Regra de negócio restritiva de exemplo
+    if (this.nex > 50 && !this.isElegivelParaAvancado()) {
+    throw new IllegalStateException("Personagens acima de 50% NEX possuem restrições para troca de classe.");
+    }
+    this.classe = novaClasse;
+    }
+
+    private boolean isElegivelParaAvancado() {
+    return this.classe.equals("Especialista");
+    }
+
+    // Getters públicos (Sem setters abertos para evitar mutabilidade descontrolada fora da classe)
+    public Long getId() { return id; }
+    public String getNome() { return nome; }
+    public String getClasse() { return classe; }
+    public String getOrigem() { return origem; }
+    public Integer getNex() { return nex; }
+    public Jogador getJogador() { return jogador; }
+    public Temporada getTemporada() { return temporada; }
+    }
