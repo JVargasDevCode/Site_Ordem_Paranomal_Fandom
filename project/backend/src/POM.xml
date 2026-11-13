@@ -1,90 +1,86 @@
-package br.com.ordemparanormal.domain;
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-        import jakarta.persistence.*;
-        import java.util.ArrayList;
-        import java.util.List;
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.5</version>
+        <relativePath/>
+    </parent>
 
-        @Entity
-        @Table(name = "personagem")
-        public class Personagem {
+    <groupId>br.com.ordemparanormal</groupId>
+    <artifactId>ordemparanormal-api</artifactId>
+    <version>1.0.0</version>
+    <name>ordemparanormal-api</name>
+    <description>API Backend para o Fandom de Ordem Paranormal</description>
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long id;
+    <properties>
+        <java.version>17</java.version>
+    </properties>
 
-        @Column(nullable = false)
-        private String nome;
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
 
-        @Column(nullable = false)
-        private String classe; // Ex: Especialista, Combatente, Ocultista
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
 
-        private String origem;
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
 
-        @Column(nullable = false)
-        private Integer nex = 5; // Nível de Exposição Paranormal (0 a 100)
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
 
-        @ManyToOne
-        @JoinColumn(name = "jogador_id", nullable = false)
-        private Jogador jogador;
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <scope>runtime</scope>
+        </dependency>
 
-        @ManyToOne
-        @JoinColumn(name = "temporada_id")
-        private Temporada temporada;
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>0.11.5</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>0.11.5</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <version>0.11.5</version>
+            <scope>runtime</scope>
+        </dependency>
 
-        // Relacionamento com regras de composição
-        @OneToMany(mappedBy = "personagem", cascade = CascadeType.ALL, orphanRemoval = true)
-        private List<Teoria> teorias = new ArrayList<>();
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
 
-    // Construtor padrão exigido pelo JPA
-    protected Personagem() {}
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
-    // Construtor com obrigatoriedade de campos essenciais (Proteção de Invariantes)
-    public Personagem(String nome, String classe, Jogador jogador) {
-    if (nome == null || nome.isBlank()) {
-    throw new IllegalArgumentException("O nome do personagem não pode ser vazio.");
-    }
-    if (classe == null || classe.isBlank()) {
-    throw new IllegalArgumentException("A classe do personagem é obrigatória.");
-    }
-    if (jogador == null) {
-    throw new IllegalArgumentException("Todo personagem precisa estar vinculado a um jogador.");
-    }
-    this.nome = nome;
-    this.classe = classe;
-    this.jogador = jogador;
-    this.nex = 5; // Padrão inicial do sistema
-    }
-
-    // --- REGRAS DE NEGÓCIO ENCAPSULADAS (Comportamento POO) ---
-
-    public void avancarNex(int valorAdicional) {
-    if (valorAdicional <= 0) {
-    throw new IllegalArgumentException("O incremento de NEX deve ser maior que zero.");
-    }
-    if (this.nex + valorAdicional > 100) {
-    throw new IllegalStateException("O NEX de um personagem não pode ultrapassar 100%.");
-    }
-    this.nex += valorAdicional;
-    }
-
-    public void alterarClasse(novaClasse) {
-    // Regra de negócio restritiva de exemplo
-    if (this.nex > 50 && !this.isElegivelParaAvancado()) {
-    throw new IllegalStateException("Personagens acima de 50% NEX possuem restrições para troca de classe.");
-    }
-    this.classe = novaClasse;
-    }
-
-    private boolean isElegivelParaAvancado() {
-    return this.classe.equals("Especialista");
-    }
-
-    // Getters públicos (Sem setters abertos para evitar mutabilidade descontrolada fora da classe)
-    public Long getId() { return id; }
-    public String getNome() { return nome; }
-    public String getClasse() { return classe; }
-    public String getOrigem() { return origem; }
-    public Integer getNex() { return nex; }
-    public Jogador getJogador() { return jogador; }
-    public Temporada getTemporada() { return temporada; }
-    }
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven
