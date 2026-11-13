@@ -1,46 +1,59 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { verificarLogado, fazerLogout } from "../services/AuthService";
+import { NavLink } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth.js";
 
-function Navbar() {
-  const navigate = useNavigate();
-  const [usuario, setUsuario] = useState(verificarLogado());
+const navigationItems = [
+  { to: "/temporadas", label: "Temporadas" },
+  { to: "/personagens", label: "Personagens" },
+  { to: "/jogadores", label: "Jogadores" },
+  { to: "/comunidade", label: "Comunidade" },
+  { to: "/teorias", label: "Teorias" },
+  { to: "/produtos", label: "Produtos" },
+  { to: "/creditos", label: "Créditos" },
+];
 
-  useEffect(() => {
-    const atualizar = () => setUsuario(verificarLogado());
-    window.addEventListener("authChange", atualizar);
-    return () => window.removeEventListener("authChange", atualizar);
-  }, []);
+export default function Navbar() {
+  const { user, logout } = useAuth();
+  const role = String(user?.role ?? user?.perfil ?? user?.tipo ?? "").toUpperCase();
+  const isAdmin = user?.isAdmin === true || ["ADMIN", "ADM", "AUTORIDADE"].includes(role);
 
-  const handleLogout = () => {
-    fazerLogout();
-    navigate("/");
+  const handleLogout = async () => {
+    try {
+      await logout();
+    } catch (error) {
+      console.error("Não foi possível encerrar a sessão.", error);
+    }
   };
 
   return (
-    <nav>
-      <Link to="/">Home</Link>
-      <Link to="/teorias">Teorias</Link>
-      <Link to="/comunidade">Comunidade</Link>
-      <Link to="/personagens">Personagens</Link>
-      <Link to="/temporadas">Temporadas</Link>
-      <Link to="/produtos">Produtos</Link>
-      {usuario ? (
-        <>
-          <Link to="/perfil">Perfil</Link>
-          <Link to="/postagens">Postagens</Link>
-          <button onClick={handleLogout} style={{ background: "transparent", border: "none", color: "inherit", cursor: "pointer" }}>
-            Sair
-          </button>
-        </>
-      ) : (
-        <>
-          <Link to="/login">Login</Link>
-          <Link to="/cadastro">Cadastro</Link>
-        </>
-      )}
-    </nav>
+    <header className="site-header">
+      <div className="site-header__inner">
+        <NavLink className="brand" to="/" aria-label="Ordem Paranormal, início">
+          <span className="brand__seal" aria-hidden="true">OP</span>
+          <span className="brand__text">
+            Ordem Paranormal
+            <small>Arquivo da comunidade</small>
+          </span>
+        </NavLink>
+
+        <nav className="site-nav" aria-label="Navegação principal">
+          {navigationItems.map((item) => (
+            <NavLink className="site-nav__link" key={item.to} to={item.to}>
+              {item.label}
+            </NavLink>
+          ))}
+          {user ? (
+            <>
+              <NavLink className="site-nav__link" to="/perfil">Perfil</NavLink>
+              {isAdmin && <NavLink className="site-nav__link" to="/admin">Admin</NavLink>}
+              <button className="site-nav__button" onClick={handleLogout} type="button">Sair</button>
+            </>
+          ) : (
+            <NavLink className="site-nav__link site-nav__link--accent" to="/login">
+              Acessar
+            </NavLink>
+          )}
+        </nav>
+      </div>
+    </header>
   );
 }
-
-export default Navbar;

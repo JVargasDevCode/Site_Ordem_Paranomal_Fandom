@@ -1,22 +1,12 @@
-function Footer() {
+export default function Footer() {
   return (
-    <footer className="footer">
-      <div className="footer-info">
-        <h3>Portal Ordem Paranormal fandom</h3>
-        <p>
-          Projeto acadêmico desenvolvido por Julio (JVargas), Davi e Viel.
+    <footer className="site-footer">
+      <div className="site-footer__inner">
+        <p className="site-footer__notice">
+          Arquivo comunitário independente, não oficial.
         </p>
-      </div>
-      <div className="footer-contato">
-        <h4>Contato</h4>
-        <p>GitHub do Projeto</p>
-      </div>
-
-      <div className="footer-copy">
-        <p>© 2026 Portal Ordem Paranormal</p>
+        <span>ORDEM // ACESSO RESTRITO</span>
       </div>
     </footer>
   );
 }
-
-export default Footer;

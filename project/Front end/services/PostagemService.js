@@ -1,40 +1,12 @@
-const CHAVE = "postagens";
+import api from "./api.js";
 
-export function listarPostagens() {
+const PostagemService = {
+  listar: (params) => api.get("/postagens", { params }),
+  obterPorId: (id) => api.get(`/postagens/${encodeURIComponent(id)}`),
+  criar: (dados) => api.post("/postagens", dados),
+  atualizar: (id, dados) => api.put(`/postagens/${encodeURIComponent(id)}`, dados),
+  remover: (id) => api.delete(`/postagens/${encodeURIComponent(id)}`),
+};
 
-  const dados =
-    localStorage.getItem(CHAVE);
-
-  return dados
-    ? JSON.parse(dados)
-    : [];
-}
-
-export function criarPostagem(postagem) {
-
-  const postagens =
-    listarPostagens();
-
-  postagens.push(postagem);
-
-  localStorage.setItem(
-    CHAVE,
-    JSON.stringify(postagens)
-  );
-}
-
-export function apagarPostagem(id) {
-
-  const postagens =
-    listarPostagens();
-
-  const novas =
-    postagens.filter(
-      post => post.id !== id
-    );
-
-  localStorage.setItem(
-    CHAVE,
-    JSON.stringify(novas)
-  );
-}
+export default PostagemService;
+export { PostagemService };
